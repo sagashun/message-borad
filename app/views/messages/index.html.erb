@@ -13,13 +13,24 @@
 </div>
 
 <%= form_for(@message,html: {class: 'form-horizonatal'}) do |f| %>
- <div class="form-group">
-名前:
-<label for="message_name" class="col-sm-2 control-label">名前</label>
-    <div class="col-sm-6">
+<% if @message.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @message.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="form-group"><label for="message_name" class="col-sm-2 control-label">な前</label><div class="col-sm-6">
   <%= f.text_area :name,class: "form-control",rows: "1",cols: "10" %>
+</div>
+</div>
   内容:
   <%= f.text_area :body,class: "form-control",rows: "1",cols: "25" %>
   <%= f.submit class: "btn btn-sm btn-primary" %>
-</div>
 <% end %>
