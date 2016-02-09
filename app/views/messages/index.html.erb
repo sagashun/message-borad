@@ -6,31 +6,10 @@
   <div class="panel-body">
     <% @messages.each do |message| %>
       <span class="label label-info"><%= message.name %></span>
+       (<%= link_to "edit" , edit_message_path(message) %>)
       <%= message.body %>
       <br>
     <% end %>
   </div>
 </div>
-
-<%= form_for(@message,html: {class: 'form-horizonatal'}) do |f| %>
-<% if @message.errors.present? %>
-    <div class="alert alert-danger">
-      <%= alert %>
-      <ul>
-        <% @message.errors.full_messages.each do |full_message| %>
-          <li>
-            <%= full_message %>
-          </li>
-        <% end %> 
-      </ul>
-    </div>
-  <% end %>
-
- <div class="form-group"><label for="message_name" class="col-sm-2 control-label">な前</label><div class="col-sm-6">
-  <%= f.text_area :name,class: "form-control",rows: "1",cols: "10" %>
-</div>
-</div>
-  内容:
-  <%= f.text_area :body,class: "form-control",rows: "1",cols: "25" %>
-  <%= f.submit class: "btn btn-sm btn-primary" %>
-<% end %>
+<%= render 'form' %>
