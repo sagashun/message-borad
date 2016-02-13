@@ -4,29 +4,10 @@
 <% @messages.each do |message| %>
 <span class="label label-info"><%= message.name %></span>
 <%= message.body %>
+<%= link_to "edit",edit_message_path(message) %>
 <br>
 <% end %>
 </div>
 </div>
-
-<%= form_for(@message) do |f| %>
-<% if @message.errors.present? %>
-<div class="alert alert-danger">
-<%= alert %>
-<ul>
-<% @message.errors.full_messages.each do |miss_message| %>
-<li>
-<%= miss_message %>
-</li>
-<%# each end %>
-<% end %>
-</ul>
-<%# if end %>
-<% end%>
-name：
-<%= f.text_field :name %>
-contents:
-<%= f.text_field :body %>
-<%= f.submit %>
-<%# form_for end %>
-<% end%>
+<%# load parts%>
+<%= render 'form' %>
