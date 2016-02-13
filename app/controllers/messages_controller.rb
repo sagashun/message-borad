@@ -6,8 +6,13 @@ end
 
 def create
 @message = Message.new(message_params)
-@message.save
+if @message.save
 redirect_to root_path,notice:'save complete!!'
+else
+@messages = Message.all
+flash.now[:alert] = "save mistake!!"
+render 'index'
+end
 end
 
 private
