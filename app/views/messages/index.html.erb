@@ -1,9 +1,13 @@
-<h1>message list</h1>
+<div class="panel panel-default">
+<div class="panel-heading">message list</div>
+<div class="panel-body">
 <% @messages.each do |message| %>
-name:<%= message.name %>
-contents:<%= message.body %>
+<span class="label label-info"><%= message.name %></span>
+<%= message.body %>
 <br>
 <% end %>
+</div>
+</div>
 
 <%= form_for(@message) do |f| %>
 name：
