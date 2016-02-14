@@ -34,7 +34,7 @@ end
 
 private
 def message_params
-params.require(:message).permit(:name,:body)
+params.require(:message).permit(:name,:body,:age)
 end
 def set_message
 @message = Message.find(params[:id])
