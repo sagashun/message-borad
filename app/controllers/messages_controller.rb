@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-before_action :set_message, only: [:edit, :update]
+before_action :set_message, only: [:edit, :update,:destroy]
 def edit
 end
 
@@ -9,6 +9,11 @@ redirect_to root_path,notice: 'update complete!!'
 else
 render 'edit'
 end
+end
+
+def destroy
+@message.destroy
+redirect_to root_path,notice: 'destroy complete!!'
 end
 
 def index
